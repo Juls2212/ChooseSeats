@@ -5,7 +5,7 @@ interface SectionSelectorProps {
 
 export function SectionSelector({ selectedSection, onSectionChange }: SectionSelectorProps) {
   return (
-    <div aria-label="Seleccionar sección" className="relative flex w-full rounded-full bg-gray-100 p-1">
+    <div aria-label="Seleccionar sección" className="relative flex w-full rounded-full bg-gray-100 p-1 lg:w-[320px]">
       <span
         aria-hidden="true"
         className="pointer-events-none absolute inset-y-1 left-1 w-[calc((100%-8px)/3)] rounded-full bg-[#1A1A1A] shadow-md transition-transform duration-[380ms] ease-in-out"

@@ -47,7 +47,7 @@ export function SeatMap({ seats, seatLayout, selectedSeatIds, onSeatChange, sele
 
   return (
     <section aria-label="Mapa de asientos">
-      <div className={`mb-3 grid gap-2 px-0.5 text-center text-[10px] font-medium text-gray-400 ${gridClassName}`}>
+      <div className={`mb-3 grid gap-2 px-0.5 text-center text-[10px] font-medium text-gray-400 lg:gap-3 ${gridClassName}`}>
         {leftColumns.map((column) => (
           <span key={column}>{column}</span>
         ))}
@@ -57,12 +57,12 @@ export function SeatMap({ seats, seatLayout, selectedSeatIds, onSeatChange, sele
         ))}
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 lg:space-y-3">
         {rows.map((row) => {
           const rowSeats = seats.filter((seat) => seat.row === row);
 
           return (
-            <div key={row} className={`grid gap-2 ${gridClassName}`}>
+            <div key={row} className={`grid gap-2 lg:gap-3 ${gridClassName}`}>
               {rowSeats.slice(0, leftColumns.length).map((seat) => (
                 <SeatButton
                   key={seat.id}

@@ -15,7 +15,7 @@ export function MobileCheckout({ selectedSeatIds, total, onSeatRemove }: MobileC
   const hasSelectedSeats = selectedSeatIds.length > 0;
 
   return (
-    <aside className="fixed inset-x-3 bottom-3 z-10 rounded-[28px] bg-[#171719] px-6 pb-6 pt-5 text-white shadow-2xl">
+    <aside className="fixed inset-x-3 bottom-3 z-10 rounded-[28px] bg-[#171719] px-6 pb-6 pt-5 text-white shadow-2xl lg:hidden">
       <div aria-label="Asientos seleccionados" className="flex h-8 items-center gap-2 overflow-x-auto">
         {selectedSeatIds.map((seatId) => (
           <span key={seatId} className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[#27272B] px-3 py-1 text-xs font-medium">
