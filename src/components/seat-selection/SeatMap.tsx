@@ -31,7 +31,7 @@ function SeatButton({ seat, isSelected, onSeatChange }: SeatButtonProps) {
           : isSelected
             ? 'cursor-pointer scale-[1.02] bg-[#5B46E8] before:bg-white hover:bg-[#4E3BD1]'
             : 'cursor-pointer bg-gray-100 before:bg-gray-300 hover:bg-gray-200'
-      } before:absolute before:bottom-1 before:left-1.5 before:right-1.5 before:h-px before:rounded-full`}
+      } before:absolute before:bottom-1 before:left-1.5 before:right-1.5 before:h-px before:rounded-full lg:before:bottom-1.5 lg:before:left-auto lg:before:right-1.5 lg:before:top-1.5 lg:before:h-auto lg:before:w-px`}
     />
   );
 }

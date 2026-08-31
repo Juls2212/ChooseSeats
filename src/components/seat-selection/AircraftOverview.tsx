@@ -12,18 +12,21 @@ export function AircraftOverview({ selectedSection }: AircraftOverviewProps) {
 
   return (
     <section aria-label="Vista del avión" className="relative h-24 overflow-hidden rounded-[24px] border border-gray-100 bg-[#F8F8F9] lg:h-40 lg:rounded-[28px]">
-      <div className="absolute left-1/2 top-1/2 h-5 w-[76%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-200 lg:h-8" />
-      <div className="absolute left-[11%] top-[42%] h-8 w-[25%] -skew-x-[28deg] rounded-l-full bg-gray-100 lg:h-16" />
-      <div className="absolute right-[11%] top-[42%] h-8 w-[25%] skew-x-[28deg] rounded-r-full bg-gray-100 lg:h-16" />
-      <div className="absolute left-[8%] top-1/2 h-3 w-[12%] -translate-y-1/2 rounded-l-full bg-gray-100 lg:h-5" />
+      <div className="absolute left-[31%] top-[39%] z-0 h-10 w-[23%] -skew-x-[28deg] rounded-l-full bg-gray-100/90 lg:h-16" />
+      <div className="absolute right-[31%] top-[39%] z-0 h-10 w-[23%] skew-x-[28deg] rounded-r-full bg-gray-100/90 lg:h-16" />
+      <div className="absolute right-[12%] top-[42%] z-0 h-3 w-[8%] skew-x-[24deg] rounded-r-full bg-gray-100 lg:h-5" />
+      <div className="absolute right-[13%] top-[50%] z-0 h-6 w-[5%] -skew-x-[24deg] rounded-br-full bg-gray-100 lg:h-9" />
 
-      <div className="absolute left-1/2 top-1/2 flex w-[65%] -translate-x-1/2 -translate-y-1/2 justify-between px-2">
+      <div className="absolute left-1/2 top-1/2 z-10 h-4 w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-200 shadow-[0_3px_8px_rgba(120,120,135,0.1)] lg:h-6" />
+      <div className="absolute left-[10%] top-1/2 z-10 h-4 w-[7%] -translate-y-1/2 rounded-l-full bg-gray-100 lg:h-6" />
+
+      <div className="absolute left-1/2 top-1/2 z-20 flex w-[64%] -translate-x-1/2 -translate-y-1/2 justify-between px-2">
         {Array.from({ length: 13 }, (_, index) => (
           <span key={index} className="h-1 w-1 rounded-full bg-gray-400 lg:h-1.5 lg:w-1.5" />
         ))}
       </div>
 
-      <div className="absolute left-[21%] top-1/2 w-[19%] -translate-y-1/2">
+      <div className="absolute left-[21%] top-1/2 z-30 w-[19%] -translate-y-1/2">
         <div
           className={`h-9 rounded-xl border-2 border-[#151517] transition-transform duration-[420ms] ease-in-out motion-reduce:transition-none lg:h-14 lg:rounded-2xl ${indicatorPosition}`}
         />

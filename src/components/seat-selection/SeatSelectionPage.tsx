@@ -12,7 +12,7 @@ import { SeatLegend } from './SeatLegend';
 import type { CabinSection, SeatData } from './types';
 
 const premiumLayout = ['A', 'B', 'C', 'D', 'E', 'F'];
-const businessLayout = ['A', 'C', 'D', 'F'];
+const businessLayout = ['A', 'B', 'C', 'D', 'E', 'F'];
 const maximumSeatSelection = 4;
 
 const createSeats = (firstRow: number, rowCount: number, seatLayout: string[], occupiedIds: string[]): SeatData[] => {

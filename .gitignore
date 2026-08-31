@@ -1,3 +1,10 @@
 node_modules/
 .next/
+.vercel/
+.env.local
+.env.*.local
+.DS_Store
+*.log
+.vscode/
+.idea/
 tsconfig.tsbuildinfo
