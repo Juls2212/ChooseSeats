@@ -2,6 +2,7 @@ import type { SeatData } from './types';
 
 interface SeatMapProps {
   seats: SeatData[];
+  seatLayout: string[];
   selectedSeatIds: string[];
   onSeatChange: (seatId: string) => void;
   selectionMessage: string;
@@ -35,18 +36,23 @@ function SeatButton({ seat, isSelected, onSeatChange }: SeatButtonProps) {
   );
 }
 
-export function SeatMap({ seats, selectedSeatIds, onSeatChange, selectionMessage }: SeatMapProps) {
+export function SeatMap({ seats, seatLayout, selectedSeatIds, onSeatChange, selectionMessage }: SeatMapProps) {
   const rows = Array.from(new Set(seats.map((seat) => seat.row)));
-  const columns = ['A', 'B', 'C', 'D', 'E', 'F'];
+  const isBusinessLayout = seatLayout.length === 4;
+  const leftColumns = seatLayout.slice(0, seatLayout.length / 2);
+  const rightColumns = seatLayout.slice(seatLayout.length / 2);
+  const gridClassName = isBusinessLayout
+    ? 'grid-cols-[repeat(2,minmax(0,1fr))_24px_repeat(2,minmax(0,1fr))]'
+    : 'grid-cols-[repeat(3,minmax(0,1fr))_24px_repeat(3,minmax(0,1fr))]';
 
   return (
     <section aria-label="Mapa de asientos">
-      <div className="mb-3 grid grid-cols-[repeat(3,minmax(0,1fr))_24px_repeat(3,minmax(0,1fr))] gap-2 px-0.5 text-center text-[10px] font-medium text-gray-400">
-        {columns.slice(0, 3).map((column) => (
+      <div className={`mb-3 grid gap-2 px-0.5 text-center text-[10px] font-medium text-gray-400 ${gridClassName}`}>
+        {leftColumns.map((column) => (
           <span key={column}>{column}</span>
         ))}
         <span aria-hidden="true" />
-        {columns.slice(3).map((column) => (
+        {rightColumns.map((column) => (
           <span key={column}>{column}</span>
         ))}
       </div>
@@ -56,8 +62,8 @@ export function SeatMap({ seats, selectedSeatIds, onSeatChange, selectionMessage
           const rowSeats = seats.filter((seat) => seat.row === row);
 
           return (
-            <div key={row} className="grid grid-cols-[repeat(3,minmax(0,1fr))_24px_repeat(3,minmax(0,1fr))] gap-2">
-              {rowSeats.slice(0, 3).map((seat) => (
+            <div key={row} className={`grid gap-2 ${gridClassName}`}>
+              {rowSeats.slice(0, leftColumns.length).map((seat) => (
                 <SeatButton
                   key={seat.id}
                   seat={seat}
@@ -66,7 +72,7 @@ export function SeatMap({ seats, selectedSeatIds, onSeatChange, selectionMessage
                 />
               ))}
               <span className="flex items-center justify-center text-[10px] font-medium text-gray-400">{row}</span>
-              {rowSeats.slice(3).map((seat) => (
+              {rowSeats.slice(leftColumns.length).map((seat) => (
                 <SeatButton
                   key={seat.id}
                   seat={seat}

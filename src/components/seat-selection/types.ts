@@ -9,6 +9,7 @@ export interface SeatData {
 
 export interface CabinSection {
   id: number;
+  name: string;
   shortLabel: string;
   displayName: string;
   seatPrice: number;

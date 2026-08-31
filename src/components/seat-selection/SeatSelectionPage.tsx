@@ -8,16 +8,17 @@ import { SeatMap } from './SeatMap';
 import { SectionSelector } from './SectionSelector';
 import type { CabinSection, SeatData } from './types';
 
-const columns = ['A', 'B', 'C', 'D', 'E', 'F'];
+const premiumLayout = ['A', 'B', 'C', 'D', 'E', 'F'];
+const businessLayout = ['A', 'C', 'D', 'F'];
 const maximumSeatSelection = 4;
 
-const createSeats = (firstRow: number, occupiedIds: string[]): SeatData[] => {
+const createSeats = (firstRow: number, rowCount: number, seatLayout: string[], occupiedIds: string[]): SeatData[] => {
   const occupiedSeatIds = new Set(occupiedIds);
 
-  return Array.from({ length: 8 }, (_, index) => {
+  return Array.from({ length: rowCount }, (_, index) => {
     const row = index + firstRow;
 
-    return columns.map(
+    return seatLayout.map(
       (column): SeatData => ({
       id: `${row}${column}`,
       row,
@@ -30,30 +31,34 @@ const createSeats = (firstRow: number, occupiedIds: string[]): SeatData[] => {
 
 const createSection = (
   id: number,
+  name: string,
   shortLabel: string,
   displayName: string,
   seatPrice: number,
   firstRow: number,
+  rowCount: number,
+  seatLayout: string[],
   occupiedIds: string[],
 ): CabinSection => {
-  const seats = createSeats(firstRow, occupiedIds);
+  const seats = createSeats(firstRow, rowCount, seatLayout, occupiedIds);
 
   return {
     id,
+    name,
     shortLabel,
     displayName,
     seatPrice,
     availableCount: seats.filter((seat) => seat.status === 'available').length,
     firstRow,
-    seatLayout: columns,
+    seatLayout,
     seats,
   };
 };
 
 const cabinSections: CabinSection[] = [
-  createSection(1, 'Sec. 1', 'Ejecutiva', 480, 1, ['1D', '2B', '3E', '4A', '5F', '6C', '7D', '8B']),
-  createSection(2, 'Sec. 2', 'Premium', 260, 9, ['10C', '12B', '14E', '16C']),
-  createSection(3, 'Sec. 3', 'Económica', 180, 17, ['17B', '18D', '19A', '20F', '21C', '22E', '23B', '24D']),
+  createSection(1, 'Business Class', 'Sec. 1', 'Business', 480, 1, 6, businessLayout, ['1D', '2C', '3F', '5A', '6D']),
+  createSection(2, 'Premium', 'Sec. 2', 'Premium', 260, 9, 8, premiumLayout, ['10C', '12B', '14E', '16C']),
+  createSection(3, 'Económica', 'Sec. 3', 'Económica', 180, 17, 13, premiumLayout, ['17B', '18D', '19A', '20F', '21C', '22E', '23B', '24D', '25A', '26F', '27C', '28E', '29B', '29D', '29F']),
 ];
 
 export default function SeatSelectionPage() {
@@ -122,7 +127,7 @@ export default function SeatSelectionPage() {
         <AircraftOverview selectedSection={selectedSection} />
         <SectionSelector selectedSection={selectedSection} onSectionChange={handleSectionChange} />
 
-        <section className="rounded-[28px] bg-[#F5F5F6] p-4">
+        <section key={activeSection.id} className="rounded-[28px] bg-[#F5F5F6] p-4 transition-opacity duration-200">
           <div className="mb-5 flex items-start justify-between gap-3">
             <h2 className="text-sm font-bold">
               {activeSection.displayName} · {activeSection.shortLabel}
@@ -133,6 +138,7 @@ export default function SeatSelectionPage() {
           </div>
           <SeatMap
             seats={activeSection.seats}
+            seatLayout={activeSection.seatLayout}
             selectedSeatIds={selectedSeatIds}
             onSeatChange={handleSeatChange}
             selectionMessage={selectionMessage}
