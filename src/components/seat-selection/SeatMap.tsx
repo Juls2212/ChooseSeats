@@ -25,13 +25,13 @@ function SeatButton({ seat, isSelected, onSeatChange }: SeatButtonProps) {
       aria-label={`Asiento ${seat.id} ${seatState}`}
       aria-pressed={isSelected}
       onClick={() => onSeatChange(seat.id)}
-      className={`relative h-9 w-full rounded-lg transition-[background-color,transform] duration-150 ease-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 ${
+      className={`relative h-8 w-full rounded-[8px] transition-[background-color,transform] duration-150 ease-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 lg:h-7 ${
         isOccupied
           ? 'cursor-default bg-gray-400 before:bg-gray-300'
           : isSelected
             ? 'cursor-pointer scale-[1.02] bg-[#5B46E8] before:bg-white hover:bg-[#4E3BD1]'
             : 'cursor-pointer bg-gray-100 before:bg-gray-300 hover:bg-gray-200'
-      } before:absolute before:bottom-1 before:left-1.5 before:right-1.5 before:h-1 before:rounded-full`}
+      } before:absolute before:bottom-1 before:left-1.5 before:right-1.5 before:h-px before:rounded-full`}
     />
   );
 }
@@ -44,10 +44,11 @@ export function SeatMap({ seats, seatLayout, selectedSeatIds, onSeatChange, sele
   const gridClassName = isBusinessLayout
     ? 'grid-cols-[repeat(2,minmax(0,1fr))_24px_repeat(2,minmax(0,1fr))]'
     : 'grid-cols-[repeat(3,minmax(0,1fr))_24px_repeat(3,minmax(0,1fr))]';
+  const mapWidthClassName = isBusinessLayout ? 'max-w-[228px] lg:max-w-[250px]' : 'max-w-[292px] lg:max-w-[310px]';
 
   return (
     <section aria-label="Mapa de asientos">
-      <div className={`mb-3 grid gap-2 px-0.5 text-center text-[10px] font-medium text-gray-400 lg:gap-3 ${gridClassName}`}>
+      <div className={`mx-auto mb-2 grid gap-1.5 px-0.5 text-center text-[9px] font-medium text-gray-400 lg:gap-2 ${gridClassName} ${mapWidthClassName}`}>
         {leftColumns.map((column) => (
           <span key={column}>{column}</span>
         ))}
@@ -57,12 +58,12 @@ export function SeatMap({ seats, seatLayout, selectedSeatIds, onSeatChange, sele
         ))}
       </div>
 
-      <div className="space-y-2 lg:space-y-3">
+      <div className={`mx-auto space-y-1.5 lg:space-y-2 ${mapWidthClassName}`}>
         {rows.map((row) => {
           const rowSeats = seats.filter((seat) => seat.row === row);
 
           return (
-            <div key={row} className={`grid gap-2 lg:gap-3 ${gridClassName}`}>
+            <div key={row} className={`grid gap-1.5 lg:gap-2 ${gridClassName}`}>
               {rowSeats.slice(0, leftColumns.length).map((seat) => (
                 <SeatButton
                   key={seat.id}
@@ -85,7 +86,7 @@ export function SeatMap({ seats, seatLayout, selectedSeatIds, onSeatChange, sele
         })}
       </div>
 
-      <p aria-live="polite" className="min-h-5 pt-3 text-center text-xs font-medium text-gray-500">
+      <p aria-live="polite" className="min-h-4 pt-2 text-center text-xs font-medium text-gray-500">
         {selectionMessage}
       </p>
     </section>

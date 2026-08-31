@@ -124,8 +124,8 @@ export default function SeatSelectionPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white px-4 pb-48 pt-5 font-sans text-[#151517] lg:bg-[#F5F5F6] lg:p-8">
-      <div className="mx-auto flex w-full max-w-[430px] flex-col gap-5 lg:max-w-[1320px] lg:gap-7 lg:rounded-[32px] lg:bg-white lg:p-9 lg:shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
+    <main className="min-h-screen bg-white px-4 pb-40 pt-4 font-sans text-[#151517] lg:bg-[#F5F5F6] lg:p-6">
+      <div className="mx-auto flex w-full max-w-[430px] flex-col gap-4 lg:max-w-[1320px] lg:gap-5 lg:rounded-[32px] lg:bg-white lg:p-7 lg:shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
         <Header />
         <AircraftOverview selectedSection={selectedSection} />
         <div className="lg:flex lg:items-center lg:justify-between">
@@ -136,13 +136,13 @@ export default function SeatSelectionPage() {
           <SeatLegend />
         </div>
 
-        <div className="lg:grid lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-6">
+        <div className="lg:grid lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-5">
           <DesktopFeatureCard />
-          <section key={activeSection.id} className="relative overflow-hidden rounded-[24px] bg-[#F5F5F6] p-4 lg:rounded-[28px] lg:p-7">
+          <section key={activeSection.id} className="relative overflow-hidden rounded-[24px] bg-[#F5F5F6] p-3 lg:rounded-[28px] lg:p-5">
             <span aria-hidden="true" className="absolute bottom-8 left-0 hidden h-52 w-8 opacity-50 lg:block" style={{ backgroundImage: 'repeating-linear-gradient(135deg, transparent 0, transparent 5px, #D1D1D6 5px, #D1D1D6 8px)' }} />
             <span aria-hidden="true" className="absolute right-0 top-8 hidden h-52 w-8 opacity-50 lg:block" style={{ backgroundImage: 'repeating-linear-gradient(135deg, transparent 0, transparent 5px, #D1D1D6 5px, #D1D1D6 8px)' }} />
             <div className="relative z-10">
-              <div className="mb-5 flex items-start justify-between gap-3">
+              <div className="mb-3 flex items-start justify-between gap-3">
                 <h2 className="text-sm font-bold lg:text-base">
                   {activeSection.displayName} · {activeSection.shortLabel}
                 </h2>

@@ -10,8 +10,8 @@ export function Header() {
       </button>
 
       <div className="mx-auto min-w-0 text-center lg:mx-0 lg:text-left">
-        <h1 className="text-lg font-bold tracking-tight text-black lg:text-3xl">Elegir asientos</h1>
-        <p className="mt-0.5 text-[10px] font-mono tracking-wide text-gray-400">
+        <h1 className="text-base font-bold tracking-tight text-black lg:text-2xl">Elegir asientos</h1>
+        <p className="mt-px text-[9px] font-mono tracking-wide text-gray-400 lg:text-[10px]">
           BOG → MDE · A320NEO · 12 SEP
         </p>
       </div>
