@@ -1,15 +1,10 @@
+import { formatPrice } from './formatPrice';
+
 interface DesktopCheckoutProps {
   selectedSeatIds: string[];
   total: number;
   onSeatRemove: (seatId: string) => void;
 }
-
-const formatPrice = (price: number) =>
-  new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
-  }).format(price);
 
 export function DesktopCheckout({ selectedSeatIds, total, onSeatRemove }: DesktopCheckoutProps) {
   const hasSelectedSeats = selectedSeatIds.length > 0;
@@ -18,7 +13,7 @@ export function DesktopCheckout({ selectedSeatIds, total, onSeatRemove }: Deskto
     <div className="mt-6 hidden items-center justify-between gap-5 rounded-2xl bg-white p-4 shadow-sm lg:flex">
       <div aria-label="Asientos seleccionados" className="flex min-h-8 flex-wrap items-center gap-2">
         {selectedSeatIds.map((seatId) => (
-          <span key={seatId} className="inline-flex items-center gap-1 rounded-full bg-[#1A1A1A] px-3 py-1.5 text-xs font-medium text-white">
+          <span key={seatId} className="inline-flex items-center gap-1 rounded-full bg-[#151517] px-3 py-1.5 text-xs font-medium text-white">
             {seatId}
             <button
               type="button"
@@ -41,7 +36,7 @@ export function DesktopCheckout({ selectedSeatIds, total, onSeatRemove }: Deskto
           disabled={!hasSelectedSeats}
           className={`rounded-full px-6 py-3 text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 ${
             hasSelectedSeats
-              ? 'bg-[#C7FF4A] text-[#171719] hover:bg-[#B6EB42]'
+              ? 'bg-[#CAFF4D] text-[#151517] hover:bg-[#BCEB46]'
               : 'cursor-not-allowed bg-gray-200 text-gray-400'
           }`}
         >

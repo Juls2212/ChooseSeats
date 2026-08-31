@@ -124,7 +124,7 @@ export default function SeatSelectionPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white px-4 pb-48 pt-5 text-black lg:bg-[#F5F5F6] lg:p-8">
+    <main className="min-h-screen bg-white px-4 pb-48 pt-5 font-sans text-[#151517] lg:bg-[#F5F5F6] lg:p-8">
       <div className="mx-auto flex w-full max-w-[430px] flex-col gap-5 lg:max-w-[1320px] lg:gap-7 lg:rounded-[32px] lg:bg-white lg:p-9 lg:shadow-[0_18px_60px_rgba(0,0,0,0.08)]">
         <Header />
         <AircraftOverview selectedSection={selectedSection} />
@@ -138,7 +138,7 @@ export default function SeatSelectionPage() {
 
         <div className="lg:grid lg:grid-cols-[230px_minmax(0,1fr)] lg:gap-6">
           <DesktopFeatureCard />
-          <section key={activeSection.id} className="relative overflow-hidden rounded-[28px] bg-[#F5F5F6] p-4 transition-opacity duration-200 lg:rounded-[30px] lg:p-7">
+          <section key={activeSection.id} className="relative overflow-hidden rounded-[24px] bg-[#F5F5F6] p-4 lg:rounded-[28px] lg:p-7">
             <span aria-hidden="true" className="absolute bottom-8 left-0 hidden h-52 w-8 opacity-50 lg:block" style={{ backgroundImage: 'repeating-linear-gradient(135deg, transparent 0, transparent 5px, #D1D1D6 5px, #D1D1D6 8px)' }} />
             <span aria-hidden="true" className="absolute right-0 top-8 hidden h-52 w-8 opacity-50 lg:block" style={{ backgroundImage: 'repeating-linear-gradient(135deg, transparent 0, transparent 5px, #D1D1D6 5px, #D1D1D6 8px)' }} />
             <div className="relative z-10">

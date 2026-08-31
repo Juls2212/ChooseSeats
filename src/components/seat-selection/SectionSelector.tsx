@@ -8,7 +8,7 @@ export function SectionSelector({ selectedSection, onSectionChange }: SectionSel
     <div aria-label="Seleccionar sección" className="relative flex w-full rounded-full bg-gray-100 p-1 lg:w-[320px]">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-1 left-1 w-[calc((100%-8px)/3)] rounded-full bg-[#1A1A1A] shadow-md transition-transform duration-[380ms] ease-in-out"
+        className="pointer-events-none absolute inset-y-1 left-1 w-[calc((100%-8px)/3)] rounded-full bg-[#151517] shadow-sm transition-transform duration-[380ms] ease-in-out motion-reduce:transition-none"
         style={{ transform: `translateX(${(selectedSection - 1) * 100}%)` }}
       />
       {[1, 2, 3].map((section) => {

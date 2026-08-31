@@ -1,8 +1,8 @@
 export function SeatLegend() {
   const items = [
-    { label: 'Disponible', color: 'bg-gray-200' },
+    { label: 'Disponible', color: 'bg-gray-100' },
     { label: 'Ocupado', color: 'bg-gray-400' },
-    { label: 'Tu selección', color: 'bg-[#6346E8]' },
+    { label: 'Tu selección', color: 'bg-[#5B46E8]' },
   ];
 
   return (

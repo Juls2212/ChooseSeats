@@ -25,12 +25,12 @@ function SeatButton({ seat, isSelected, onSeatChange }: SeatButtonProps) {
       aria-label={`Asiento ${seat.id} ${seatState}`}
       aria-pressed={isSelected}
       onClick={() => onSeatChange(seat.id)}
-      className={`relative h-9 w-full rounded-lg transition-[background-color,transform] duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 ${
+      className={`relative h-9 w-full rounded-lg transition-[background-color,transform] duration-150 ease-out motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 ${
         isOccupied
           ? 'cursor-default bg-gray-400 before:bg-gray-300'
           : isSelected
-            ? 'cursor-pointer scale-[1.03] bg-[#6346E8] before:bg-white hover:bg-[#5538D6]'
-            : 'cursor-pointer bg-gray-200 before:bg-gray-300 hover:bg-gray-300'
+            ? 'cursor-pointer scale-[1.02] bg-[#5B46E8] before:bg-white hover:bg-[#4E3BD1]'
+            : 'cursor-pointer bg-gray-100 before:bg-gray-300 hover:bg-gray-200'
       } before:absolute before:bottom-1 before:left-1.5 before:right-1.5 before:h-1 before:rounded-full`}
     />
   );

@@ -24,7 +24,7 @@ export function AircraftOverview({ selectedSection }: AircraftOverviewProps) {
 
       <div className="absolute left-[20%] top-1/2 w-[20%] -translate-y-1/2">
         <div
-          className={`h-12 rounded-2xl border-2 border-black transition-transform duration-[420ms] ease-in-out lg:h-20 lg:rounded-[22px] ${indicatorPosition}`}
+          className={`h-12 rounded-2xl border-2 border-[#151517] transition-transform duration-[420ms] ease-in-out motion-reduce:transition-none lg:h-20 lg:rounded-[22px] ${indicatorPosition}`}
         />
       </div>
 
